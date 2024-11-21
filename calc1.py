@@ -1,139 +1,318 @@
+import json
+import re
+from operations import AddOperation, SubOperation, MulOperation, DivOperation
+
 # Token types
-#
-# EOF (end-of-file) token is used to indicate that
-# there is no more input left for lexical analysis
-INTEGER, MINUS, EOF = 'INTEGER', 'MINUS', 'EOF'
+INTEGER, PLUS, MINUS, MUL, DIV, LPAREN, RPAREN, EOF, ATTR, REGEX, COMMA, STRING = (
+    'INTEGER', 'PLUS', 'MINUS', 'MUL', 'DIV', '(', ')', 'EOF', 'ATTR', 'REGEX', 'COMMA', 'STRING'
+)
 
 
-class Token(object):
+class Token:
     def __init__(self, type, value):
-        # token type: INTEGER, MINUS, or EOF
         self.type = type
-        # token value: 0, 1, 2. 3, 4, 5, 6, 7, 8, 9, '+', or None
         self.value = value
 
     def __str__(self):
-        """String representation of the class instance.
-
-        Examples:
-            Token(INTEGER, 3)
-            Token(MINUS '-')
-        """
-        return 'Token({type}, {value})'.format(
-            type=self.type,
-            value=repr(self.value)
-        )
+        return f'Token({self.type}, {repr(self.value)})'
 
     def __repr__(self):
         return self.__str__()
 
 
-class Interpreter(object):
+class Lexer:
     def __init__(self, text):
-        # client string input, e.g. "3+5"
         self.text = text
-        # self.pos is an index into self.text
         self.pos = 0
-        # current token instance
-        self.current_token = None
+        self.current_char = self.text[self.pos]
 
     def error(self):
-        raise Exception('Error parsing input')
+        raise Exception('Invalid character')
+
+    def advance(self):
+        self.pos += 1
+        if self.pos > len(self.text) - 1:
+            self.current_char = None
+        else:
+            self.current_char = self.text[self.pos]
 
     def skip_whitespace(self):
-        """Skip over any whitespace characters."""
-        while self.pos < len(self.text) and self.text[self.pos].isspace():
-            self.pos += 1
+        while self.current_char is not None and self.current_char.isspace():
+            self.advance()
+
+    def integer(self):
+        result = ''
+        while self.current_char is not None and self.current_char.isdigit():
+            result += self.current_char
+            self.advance()
+        return int(result)
+
+    # for regex
+    def string(self):
+        result = ''
+        self.advance()  # skip the opening quote
+        while self.current_char is not None and self.current_char != '"':
+            result += self.current_char
+            self.advance()
+        self.advance()  # skip the closing quote
+        return result
 
     def get_next_token(self):
-        """Lexical analyzer (also known as scanner or tokenizer)
+        while self.current_char is not None:
+            if self.current_char.isspace():
+                self.skip_whitespace()
+                continue
 
-        This method is responsible for breaking a sentence
-        apart into tokens. One token at a time.
-        """
-        text = self.text
+            if self.current_char.isdigit():
+                return Token(INTEGER, self.integer())
 
-        # is self.pos index past the end of the self.text ?
-        # if so, then return EOF token because there is no more
-        # input left to convert into tokens
-        if self.pos > len(text) - 1:
-            return Token(EOF, None)
+            if self.current_char.isalpha():
+                word = ''
+                while self.current_char is not None and self.current_char.isalnum():
+                    word += self.current_char
+                    self.advance()
+                if word == 'Regex':
+                    return Token(REGEX, word)
+                elif word == 'ATTR':
+                    return Token(ATTR, word)
 
-        # skip any whitespace
-        self.skip_whitespace()
+            if self.current_char == '+':
+                self.advance()
+                return Token(PLUS, '+')
 
-        # get a character at the position self.pos and decide
-        # what token to create based on the character
+            if self.current_char == '-':
+                self.advance()
+                return Token(MINUS, '-')
 
-        # if the character is a digit then convert it to
-        # integer, create an INTEGER token, increment self.pos
-        # index to point to the next character after the digit,
-        # and return the INTEGER token
-        if self.pos < len(text) and text[self.pos].isdigit():
-            num_str = ''
-            while self.pos < len(text) and text[self.pos].isdigit():
-                num_str += text[self.pos]
-                self.pos += 1
-            return Token(INTEGER, int(num_str))
+            if self.current_char == '*':
+                self.advance()
+                return Token(MUL, '*')
 
-        if self.pos < len(text) and text[self.pos] == '-':
-            token = Token(MINUS, text[self.pos])
-            self.pos += 1
-            return token
+            if self.current_char == '/':
+                self.advance()
+                return Token(DIV, '/')
 
-        self.error()
+            if self.current_char == '(':
+                self.advance()
+                return Token(LPAREN, '(')
+
+            if self.current_char == ')':
+                self.advance()
+                return Token(RPAREN, ')')
+
+            if self.current_char == ',':
+                self.advance()
+                return Token(COMMA, ',')
+
+            if self.current_char == '"':
+                return Token(STRING, self.string())
+
+            self.error()
+
+        return Token(EOF, None)
+
+
+class AST:
+    pass
+
+
+class BinOp(AST):
+    def __init__(self, left, op, right):
+        self.left = left
+        self.token = self.op = op
+        self.right = right
+
+
+class Num(AST):
+    def __init__(self, token):
+        self.token = token
+        self.value = token.value
+
+
+class Regex(AST):
+    def __init__(self, attr, pattern):
+        self.attr = attr
+        self.pattern = pattern
+
+
+class Parser:
+    def __init__(self, lexer):
+        self.lexer = lexer
+        self.current_token = self.lexer.get_next_token()
+        self.attr_value = None
+
+    def error(self):
+        raise Exception('Invalid syntax')
 
     def eat(self, token_type):
-        # compare the current token type with the passed token
-        # type and if they match then "eat" the current token
-        # and assign the next token to the self.current_token,
-        # otherwise raise an exception.
         if self.current_token.type == token_type:
-            self.current_token = self.get_next_token()
+            self.current_token = self.lexer.get_next_token()
         else:
             self.error()
 
+    def factor(self):
+        token = self.current_token
+        if token.type == INTEGER:
+            self.eat(INTEGER)
+            return Num(token)
+        elif token.type == ATTR:  # handles ATTR as a variable
+            self.eat(ATTR)
+            return Num(Token(INTEGER, self.attr_value))  # use attr_value as its numeric value
+        elif token.type == LPAREN:
+            self.eat(LPAREN)
+            node = self.expr()
+            self.eat(RPAREN)
+            return node
+        elif token.type == REGEX:
+            return self.regex()
+        else:
+            self.error()
+
+    def regex(self):
+        self.eat(REGEX)
+        self.eat(LPAREN)
+        attr = self.current_token
+        self.eat(ATTR)
+        self.eat(COMMA)
+        pattern = self.current_token
+        self.eat(STRING)
+        self.eat(RPAREN)
+        return Regex(attr, pattern)
+
+    def term(self):
+        node = self.factor()
+        while self.current_token.type in (MUL, DIV):
+            token = self.current_token
+            if token.type == MUL:
+                self.eat(MUL)
+            elif token.type == DIV:
+                self.eat(DIV)
+            node = BinOp(left=node, op=token, right=self.factor())
+        return node
+
     def expr(self):
-        """expr -> INTEGER MINUS INTEGER"""
-        # set current token to the first token taken from the input
-        self.current_token = self.get_next_token()
+        node = self.term()
+        while self.current_token.type in (PLUS, MINUS):
+            token = self.current_token
+            if token.type == PLUS:
+                self.eat(PLUS)
+            elif token.type == MINUS:
+                self.eat(MINUS)
+            node = BinOp(left=node, op=token, right=self.term())
+        return node
 
-        # we expect the current token to be a single-digit integer
-        left = self.current_token
-        self.eat(INTEGER)
+    def parse(self):
+        return self.expr()
 
-        # we expect the current token to be a '+' token
-        op = self.current_token
-        self.eat(MINUS)
 
-        # we expect the current token to be a single-digit integer
-        right = self.current_token
-        self.eat(INTEGER)
-        # after the above call the self.current_token is set to
-        # EOF token
+class NodeVisitor:
+    def visit(self, node):
+        method_name = 'visit_' + type(node).__name__
+        visitor = getattr(self, method_name, self.generic_visit)
+        return visitor(node)
 
-        # at this point INTEGER PLUS INTEGER sequence of tokens
-        # has been successfully found and the method can just
-        # return the result of adding two integers, thus
-        # effectively interpreting client input
-        result = left.value - right.value
-        return result
+    def generic_visit(self, node):
+        raise Exception(f'No visit_{type(node).__name__} method')
+
+
+class Interpreter(NodeVisitor):
+    def __init__(self, parser, attr_value):
+        self.parser = parser
+        self.attr_value = attr_value
+        self.operations = {
+            'PLUS': AddOperation(),
+            'MINUS': SubOperation(),
+            'MUL': MulOperation(),
+            'DIV': DivOperation()
+        }
+
+    def visit_BinOp(self, node):
+        operation = self.operations.get(node.op.type)
+        if operation:
+            return operation.apply(self.visit(node.left), self.visit(node.right))
+        else:
+            raise ValueError(f"Unsupported operation: {node.op.type}")
+
+    def visit_Num(self, node):
+        return node.value
+
+    def visit_Regex(self, node):
+        pattern = node.pattern.value
+        return str(bool(re.match(pattern, self.attr_value)))
+
+    def interpret(self):
+        tree = self.parser.parse()
+        return self.visit(tree)
+
+
+def process_message(message, equation):
+    message_obj = json.loads(message)
+    attr_value = message_obj.get("value", "")  # get returns default value if not found
+
+    # check if attr_value is numeric
+    try:
+        numeric_value = float(attr_value)
+    except ValueError:
+        numeric_value = None
+
+    lexer = Lexer(equation)
+    parser = Parser(lexer)
+
+    try:
+        if "Regex" in equation:  # handles regex equations
+            interpreter = Interpreter(parser, attr_value)
+        else:  # handles arithmetic equations
+            if numeric_value is None:
+                raise ValueError(f"Non-numeric value '{attr_value}' cannot be used in arithmetic equations")
+            parser.attr_value = numeric_value  # Pass numeric value to parser
+            interpreter = Interpreter(parser, str(numeric_value))
+
+        tree = parser.parse()
+        if tree is None:  # ensuring tree is valid
+            raise Exception("Failed to parse equation: Invalid AST")
+
+        result = interpreter.visit(tree)
+
+        output_message = {
+            "asset_id": message_obj["asset_id"],
+            "attribute_id": "output_" + message_obj["attribute_id"],
+            "timestamp": message_obj["timestamp"],
+            "value": result
+        }
+        return output_message
+
+    except Exception as e:
+        raise Exception(f"Error processing message: {e}")
+
+
+def write_to_file(output_message, output_file):
+    with open(output_file, "a") as file:
+        file.write(json.dumps(output_message) + "\n")
 
 
 def main():
-    while True:
-        try:
-            # To run under Python3 replace 'raw_input' call
-            # with 'input'
-            text = input('calc> ')
-        except EOFError:
-            break
-        if not text:
+    input_file = "data.txt"
+    output_file = "processed_data.txt"
+
+    # read equation from config.txt
+    with open("config.txt", "r") as config_file:
+        equation = config_file.read().strip()
+
+    with open(input_file, "r") as file:
+        records = file.readlines()
+
+    for record in records:
+        record = record.strip()
+        if not record:
             continue
-        interpreter = Interpreter(text)
-        result = interpreter.expr()
-        print(result)
+
+        try:
+            output_message = process_message(record, equation)
+            write_to_file(output_message, output_file)
+            print(output_message)
+        except Exception as e:
+            print(f"Error processing record: {record}, Error: {e}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
