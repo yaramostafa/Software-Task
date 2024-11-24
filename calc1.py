@@ -1,6 +1,7 @@
 import json
 import re
 from operations import AddOperation, SubOperation, MulOperation, DivOperation
+from database import SQLiteDataSink
 
 # Token types
 INTEGER, PLUS, MINUS, MUL, DIV, LPAREN, RPAREN, EOF, ATTR, REGEX, COMMA, STRING = (
@@ -245,11 +246,24 @@ class Interpreter(NodeVisitor):
         return self.visit(tree)
 
 
+# class FileDataSource:
+#     def __init__(self, input_file):
+#         self.input_file = input_file
+#
+#     def read_messages(self):
+#         with open(self.input_file, "r") as file:
+#             for record in file:
+#                 record = record.strip()
+#                 if record:
+#                     yield record
+
+
+
 def process_message(message, equation):
     message_obj = json.loads(message)
     attr_value = message_obj.get("value", "")  # get returns default value if not found
 
-    # check if attr_value is numeric
+    # Check if attr_value is numeric
     try:
         numeric_value = float(attr_value)
     except ValueError:
@@ -285,34 +299,35 @@ def process_message(message, equation):
         raise Exception(f"Error processing message: {e}")
 
 
-def write_to_file(output_message, output_file):
-    with open(output_file, "a") as file:
-        file.write(json.dumps(output_message) + "\n")
-
-
 def main():
     input_file = "data.txt"
-    output_file = "processed_data.txt"
+    db_name = "processed_data.db"
 
-    # read equation from config.txt
+    # reading equation from config.txt
     with open("config.txt", "r") as config_file:
         equation = config_file.read().strip()
 
-    with open(input_file, "r") as file:
-        records = file.readlines()
+    # initializing data sink for SQLite
+    data_sink = SQLiteDataSink(db_name)
 
-    for record in records:
-        record = record.strip()
-        if not record:
-            continue
+    try:
+        with open(input_file, "r") as file:
+            records = file.readlines()
 
-        try:
-            output_message = process_message(record, equation)
-            write_to_file(output_message, output_file)
-            print(output_message)
-        except Exception as e:
-            print(f"Error processing record: {record}, Error: {e}")
+        for record in records:
+            record = record.strip()
+            if not record:
+                continue
 
+            try:
+                output_message = process_message(record, equation)
+                data_sink.write_message(output_message)  # writes to SQLite database
+                print(output_message)
+            except Exception as e:
+                print(f"Error processing record: {record}, Error: {e}")
+
+    finally:
+        data_sink.close()  # ensures database connection is closed
 
 if __name__ == "__main__":
     main()
