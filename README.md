@@ -13,6 +13,7 @@ This project processes data records in real-time by:
   ATTR+50*(ATTR/10)
   Regex(ATTR, "^dog")
 - Storing processed results in a SQLite database.
+- Managing KPIs and their associations with assets using a Django-based web interface.
 
 ---
 
@@ -24,5 +25,47 @@ This project processes data records in real-time by:
 4. **FileReader**: Reads new data records incrementally from a file.
 5. **DataProcessor**: Processes records using the provided equation.
 6. **SQLiteDataSink**: Stores the processed output into a SQLite database.
+
+---
+
+## Django Task
+
+The Django application provides APIs for managing KPIs and linking them to assets. 
+
+### Tasks Implemented:
+1. **KPI App**:
+   - Created a `KPI` app in Django to manage KPI information and their linkage to assets.
+   
+2. **Models**:
+   - `KPI`: Stores KPI details such as name, expression, and optional description.
+   - `AssetKPI`: Links KPIs to asset IDs fetched dynamically from the SQLite database.
+
+3. **Endpoints**:
+   - **List/Create KPI**: `/api/kpi/` (supports GET and POST methods).
+   - **Link Asset to KPI**: `/api/kpi/link_asset/` (supports POST to create associations).
+
+4. **Swagger Documentation**:
+   - Interactive API documentation available at `/swagger/`.
+   - ReDoc UI available at `/redoc/`.
+   - Swagger JSON schema available at `/swagger.json`.
+
+---
+
+## Django Code Details
+
+### `models.py`
+Defines two models:
+- **KPI**: Represents the KPI with fields `name`, `expression`, and an optional `description`.
+- **AssetKPI**: Links KPIs to assets using a foreign key relationship, with asset IDs dynamically fetched from the SQLite database.
+
+### `urls.py`
+Defines API routes:
+- **`admin/`**: Django admin panel.
+- **`api/kpi/`**: Includes all KPI-related endpoints:
+  - List/Create KPI
+  - Link Asset to KPI
+- **`swagger/`**: Interactive Swagger UI for API documentation.
+- **`redoc/`**: ReDoc UI for a detailed API overview.
+- **`swagger.json`**: Provides the raw Swagger JSON schema.
 
 ---
