@@ -8,6 +8,7 @@ This repository contains a Python implementation for processing and transforming
 
 This project processes data records (data.txt) in real-time by:
 - Parsing and interpreting equations provided in a configuration file (config.txt).
+  
   example :
   ATTR+50*(ATTR/10)
   Regex(ATTR, "^dog")
