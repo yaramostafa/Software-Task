@@ -8,9 +8,9 @@ This repository contains a Python implementation for processing and transforming
 
 This project processes data records (data.txt) in real-time by:
 - Parsing and interpreting equations provided in a configuration file (config.txt).
+  
   example :
-  ATTR+50*(ATTR/10)
-  Regex(ATTR, "^dog")
+  ATTR+50*(ATTR/10), Regex(ATTR, "^dog")
 - Performing computations or regex-based matching on incoming data.
 - Storing processed results in a SQLite database (processed_data.db).
 - Managing KPIs and their associations with assets using a Django-based web interface.
@@ -80,3 +80,14 @@ Defines API routes:
 - **`redoc/`**: ReDoc UI for a detailed API overview.
 - **`swagger.json`**: Provides the raw Swagger JSON schema.
 ---
+
+## swagger (http://127.0.0.1:8000/swagger/)
+![image](https://github.com/user-attachments/assets/729cee9d-cedc-41e3-ae52-cfba27f9a517)
+
+## Kpi List Create (http://127.0.0.1:8000/api/kpi/)
+![image](https://github.com/user-attachments/assets/ad3a9573-8ab1-42f9-805b-d7270d0bcf09)
+
+## Asset Kpi Create Link (http://127.0.0.1:8000/api/kpi/assets/link/)
+![image](https://github.com/user-attachments/assets/3dc1e88a-bf69-4e21-9068-f6802c62cbaf)
+
+
