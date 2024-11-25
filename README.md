@@ -10,8 +10,7 @@ This project processes data records (data.txt) in real-time by:
 - Parsing and interpreting equations provided in a configuration file (config.txt).
   
   example :
-  ATTR+50*(ATTR/10)
-  Regex(ATTR, "^dog")
+  ATTR+50*(ATTR/10), Regex(ATTR, "^dog")
 - Performing computations or regex-based matching on incoming data.
 - Storing processed results in a SQLite database (processed_data.db).
 - Managing KPIs and their associations with assets using a Django-based web interface.
