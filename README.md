@@ -6,18 +6,18 @@ This repository contains a Python implementation for processing and transforming
 
 ## Overview
 
-This project processes data records in real-time by:
-- Parsing and interpreting equations provided in a configuration file.
-- Performing computations or regex-based matching on incoming data.
+This project processes data records (data.txt) in real-time by:
+- Parsing and interpreting equations provided in a configuration file (config.txt).
   example :
   ATTR+50*(ATTR/10)
   Regex(ATTR, "^dog")
-- Storing processed results in a SQLite database.
+- Performing computations or regex-based matching on incoming data.
+- Storing processed results in a SQLite database (processed_data.db).
 - Managing KPIs and their associations with assets using a Django-based web interface.
 
 ---
 
-## Architecture (calc1.py)
+## Architecture of calc1.py
 
 1. **Lexer**: Converts input strings (equations) into tokens.
 2. **Parser**: Constructs an Abstract Syntax Tree (AST) from tokens.
@@ -30,7 +30,7 @@ This project processes data records in real-time by:
 
 ## Django Task
 
-The Django application provides APIs for managing KPIs and linking them to assets. 
+The Django application provides APIs for managing KPIs and linking them to assets_id. 
 
 ### Tasks Implemented:
 1. **KPI App**:
@@ -61,11 +61,10 @@ Defines two models:
 ### `urls.py`
 Defines API routes:
 - **`admin/`**: Django admin panel.
-- **`api/kpi/`**: Includes all KPI-related endpoints:
-  - List/Create KPI
-  - Link Asset to KPI
+- **`api/kpi/kpis/`**: Endpoint to list or create KPIs using the `KPIListCreateView`. (Supports GET and POST).
+- **`api/kpi/assets/link/`**: Endpoint to link assets to KPIs using the `AssetKPICreateView`. (Supports POST).
+- **`api/kpi/`**: Defaults to the `KPIListCreateView` for listing or creating KPIs. (Supports GET and POST).
 - **`swagger/`**: Interactive Swagger UI for API documentation.
 - **`redoc/`**: ReDoc UI for a detailed API overview.
 - **`swagger.json`**: Provides the raw Swagger JSON schema.
-
 ---
