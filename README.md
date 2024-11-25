@@ -16,7 +16,7 @@ This project processes data records in real-time by:
 
 ---
 
-## Architecture
+## Architecture (calc1.py)
 
 1. **Lexer**: Converts input strings (equations) into tokens.
 2. **Parser**: Constructs an Abstract Syntax Tree (AST) from tokens.
