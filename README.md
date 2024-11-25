@@ -1,4 +1,4 @@
-# Data Processing Pipeline with Dynamic Expression Parsing
+# Data Ingestion and Processing Engine with Django Integration
 
 This repository contains a Python implementation for processing and transforming data records based on configurable arithmetic and regex-based equations. It uses a custom Lexer, Parser, and Interpreter to evaluate mathematical and logical expressions (Regex) dynamically.
 
