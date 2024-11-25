@@ -88,5 +88,6 @@ Defines API routes:
 ![image](https://github.com/user-attachments/assets/ad3a9573-8ab1-42f9-805b-d7270d0bcf09)
 
 ## Asset Kpi Create Link (http://127.0.0.1:8000/api/kpi/assets/link/)
-![image](https://github.com/user-attachments/assets/584af9d8-2e4c-40de-ba9c-4517dfd49d28)
+![image](https://github.com/user-attachments/assets/3dc1e88a-bf69-4e21-9068-f6802c62cbaf)
+
 
