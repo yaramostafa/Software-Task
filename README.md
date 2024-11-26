@@ -1,6 +1,6 @@
-# Data Processing Pipeline with Dynamic Expression Parsing
+# Data Ingestion and Processing Engine with Django Integration
 
-This repository contains a Python implementation for processing and transforming data records based on configurable arithmetic and regex-based equations. It uses a custom Lexer, Parser, and Interpreter to evaluate mathematical and logical expressions dynamically.
+This repository contains a Python implementation for processing and transforming data records based on configurable arithmetic and regex-based equations. It uses a custom Lexer, Parser, and Interpreter to evaluate mathematical and logical expressions (Regex) dynamically.
 
 ---
 
@@ -30,11 +30,11 @@ This project processes data records (data.txt) in real-time by:
 
 ## Django Task
 
-The Django application provides APIs for managing KPIs and linking them to assets_id. 
+The Django application provides APIs for managing KPIs and linking them to assets id. 
 
 ### Tasks Implemented:
 1. **KPI App**:
-   - Created a `KPI` app in Django to manage KPI information and their linkage to assets.
+   - Created a `KPI` app in Django to manage KPI information and their linkage to assets id.
    
 2. **Models**:
    - `KPI`: Stores KPI details such as name, expression, and optional description.
@@ -47,7 +47,6 @@ The Django application provides APIs for managing KPIs and linking them to asset
 4. **Swagger Documentation**:
    - Interactive API documentation available at `/swagger/`.
    - ReDoc UI available at `/redoc/`.
-   - Swagger JSON schema available at `/swagger.json`.
 
 ---
 
@@ -78,7 +77,6 @@ Defines API routes:
 - **`api/kpi/`**: Defaults to the `KPIListCreateView` for listing or creating KPIs. (Supports GET and POST).
 - **`swagger/`**: Interactive Swagger UI for API documentation.
 - **`redoc/`**: ReDoc UI for a detailed API overview.
-- **`swagger.json`**: Provides the raw Swagger JSON schema.
 ---
 
 ## swagger (http://127.0.0.1:8000/swagger/)
