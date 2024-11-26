@@ -70,10 +70,10 @@ Defines serializers for `KPI` and `AssetKPI` models to transform data between Py
   - Used for converting `KPI` objects to JSON for API responses and for accepting data for creating or updating KPIs via the API.
 - **`AssetKPISerializer`**:
   - Serializes the `AssetKPI` model, which links an asset to a KPI.
-  - The `asset_id` field is a `ChoiceField`, populated with distinct `asset_id` values from the `processed_data` database, allowing only valid asset IDs to be selected.
+  - The `asset_id` field is a `ChoiceField` populated with `asset_id` values from the `data.txt` file.
   - Used for linking assets to KPIs through the API.
 
-The `get_asset_ids()` function is used to dynamically fetch the unique `asset_id` values from the database and provide them as choices for the `asset_id` field.
+The `get_asset_ids()` function is used to dynamically fetch the unique `asset_id` values from the data file and provide them as choices for the `asset_id` field.
 
 ### `urls.py`
 Defines API routes:
