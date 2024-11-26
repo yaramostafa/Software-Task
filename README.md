@@ -19,13 +19,13 @@ This project processes data records (data.txt) in real-time by:
 
 ## Architecture 
 
-1. **Token** `Token.py`: Defines token types for parsing equations and a Token class to represent individual tokens with a type and value
+1. **Token** `Token.py`: Defines token types for parsing equations and a Token class to represent individual tokens with a type and value.
 2. **AST** `AST.py`: Represents nodes for binary operations, numeric values, and regex operations.
 4. **Lexer** `lexer.py`: Converts input strings (equations) into tokens.
 5. **Parser** `parser.py`: Constructs an Abstract Syntax Tree (AST) from tokens.
 6. **Interpreter** `interpreter.py`: Traverses the AST to evaluate expressions.
 7. **Operations** `operations.py`: Defines a base Operation class and subclasses for addition, subtraction, multiplication, and division operations.
-8. **Django Database** `django_database.py`: Retrieves the KPI expression for a given asset_id by joining the kpi_kpi and kpi_assetkpi tables.
+8. **Django Database** `django_database.py`: Retrieves the KPI expression for a given asset_id by joining the kpi_kpi (has the name and the expression) and kpi_assetkpi (has the kpi linked to asset_it) tables.
 9. **Main** `Main.py`: Continuously reads, processes, and writes data records to the database (processed_data.db).
    - **process_message**: Processes incoming messages, applies the relevant equation (regex or arithmetic), and returns the result.
    - **FileReader**: Reads new records from a file starting from the last position.
