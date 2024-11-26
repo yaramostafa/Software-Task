@@ -4,24 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60bb186c-b03f-471c-b0c3-0782f250eed2" name="Changes" comment="1st blog page">
-      <change afterPath="$PROJECT_DIR$/.idea/Task1-SW.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example equations.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/operations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calc1.py" beforeDir="false" afterPath="$PROJECT_DIR$/calc1.py" afterDir="false" />
+    <list default="true" id="60bb186c-b03f-471c-b0c3-0782f250eed2" name="Changes" comment="Final modifications done.">
+      <change afterPath="$PROJECT_DIR$/AST.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Token.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interpreter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lexer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DisplayDB.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/calc1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangoTask/kpi/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoTask/kpi/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangoTask/kpi/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoTask/kpi/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangoTask/processed_data.db" beforeDir="false" afterPath="$PROJECT_DIR$/djangoTask/processed_data.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processed_data.db" beforeDir="false" afterPath="$PROJECT_DIR$/processed_data.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -45,17 +63,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.calc1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.DisplayDB.executor": "Run",
+    "Python.Main (1).executor": "Run",
+    "Python.calc1.executor": "Run",
+    "Python.django_database (1).executor": "Run",
+    "Python.django_database.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.testing (1).executor": "Run",
+    "Python.testing.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master"
   }
-}</component>
-  <component name="RunManager" selected="Python.calc1">
-    <configuration name="calc1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yara.maraey\PycharmProjects\Task1-SW\djangoTask\kpi" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.Main (1)">
+    <configuration name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Task1-SW" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -68,7 +97,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/calc1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -77,7 +106,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Task1-SW" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -90,7 +119,73 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\yara.maraey\PycharmProjects\Task1-SW\Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="django_database (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Task1-SW" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/django_database.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="django_database" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Task1-SW" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\yara.maraey\PycharmProjects\Task1-SW\django_database.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testing (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Task1-SW" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/djangoTask/kpi" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/djangoTask/kpi/testing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -101,8 +196,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.calc1" />
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python.Main (1)" />
+        <item itemvalue="Python.Main" />
+        <item itemvalue="Python.django_database (1)" />
+        <item itemvalue="Python.django_database" />
+        <item itemvalue="Python.testing (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -138,11 +236,56 @@
       <option name="project" value="LOCAL" />
       <updated>1731961117614</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Functionality implemented; requires refactoring for optimization and clarity.">
+      <option name="closed" value="true" />
+      <created>1732224243762</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1732224243762</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Django creation done.">
+      <option name="closed" value="true" />
+      <created>1732470277544</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732470277544</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Refactored code and improved comments.">
+      <option name="closed" value="true" />
+      <created>1732540189475</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732540189475</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Django test cases done.">
+      <option name="closed" value="true" />
+      <created>1732544119056</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1732544119056</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Final modifications done.">
+      <option name="closed" value="true" />
+      <created>1732550378231</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732550378231</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1st blog page" />
-    <option name="LAST_COMMIT_MESSAGE" value="1st blog page" />
+    <MESSAGE value="Functionality implemented; requires refactoring for optimization and clarity." />
+    <MESSAGE value="Django creation done." />
+    <MESSAGE value="Refactored code and improved comments." />
+    <MESSAGE value="Django test cases done." />
+    <MESSAGE value="Final modifications done." />
+    <option name="LAST_COMMIT_MESSAGE" value="Final modifications done." />
   </component>
 </project>
