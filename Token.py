@@ -17,4 +17,3 @@ class Token:
 
     def __repr__(self): # Magic function
         return self.__str__()
-

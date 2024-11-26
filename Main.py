@@ -5,6 +5,7 @@ from django_database import get_expression
 from interpreter import *
 
 def process_message(message, equation):
+
     message_obj = json.loads(message)
     attr_value = message_obj.get("value", "")  # Get returns default value if not found
 

@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60bb186c-b03f-471c-b0c3-0782f250eed2" name="Changes" comment="Final modifications done.">
-      <change afterPath="$PROJECT_DIR$/AST.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Token.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_database.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/interpreter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
+    <list default="true" id="60bb186c-b03f-471c-b0c3-0782f250eed2" name="Changes" comment="Refactoring done.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DisplayDB.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/calc1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangoTask/kpi/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoTask/kpi/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangoTask/kpi/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoTask/kpi/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangoTask/processed_data.db" beforeDir="false" afterPath="$PROJECT_DIR$/djangoTask/processed_data.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Token.py" beforeDir="false" afterPath="$PROJECT_DIR$/Token.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/processed_data.db" beforeDir="false" afterPath="$PROJECT_DIR$/processed_data.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -276,8 +266,27 @@
       <option name="project" value="LOCAL" />
       <updated>1732550378231</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Refactoring done.">
+      <option name="closed" value="true" />
+      <created>1732627836785</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732627836785</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1st blog page" />
@@ -286,6 +295,7 @@
     <MESSAGE value="Refactored code and improved comments." />
     <MESSAGE value="Django test cases done." />
     <MESSAGE value="Final modifications done." />
-    <option name="LAST_COMMIT_MESSAGE" value="Final modifications done." />
+    <MESSAGE value="Refactoring done." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring done." />
   </component>
 </project>
