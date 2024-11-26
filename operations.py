@@ -1,3 +1,4 @@
+# Strategy Design Pattern
 class Operation:
     """Base class for all operations."""
     def apply(self, left, right):

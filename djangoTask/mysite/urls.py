@@ -26,7 +26,7 @@ schema_view = get_schema_view(
         default_version='v1',
         description="API documentation for KPI endpoints",
         terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="your_email@example.com"),
+        contact=openapi.Contact(email="yara.maraey@gizesystems.onmicrosoft.com"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,

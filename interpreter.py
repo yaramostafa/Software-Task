@@ -2,6 +2,7 @@ import re
 from operations import AddOperation, SubOperation, MulOperation, DivOperation
 from parser import *
 
+# Visitor Design Pattern
 class NodeVisitor:
     """
     Base visitor class for traversing and interpreting the AST nodes.
