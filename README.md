@@ -7,24 +7,30 @@ This repository contains a Python implementation for processing and transforming
 ## Overview
 
 This project processes data records (data.txt) in real-time by:
-- Parsing and interpreting equations provided in a configuration file (config.txt).
+- Parsing and interpreting equations provided through a kpi endpoint.
   
   example :
   ATTR+50*(ATTR/10), Regex(ATTR, "^dog")
 - Performing computations or regex-based matching on incoming data.
-- Storing processed results in a SQLite database (processed_data.db).
+- Storing processed results in a SQLite database `processed_data.db`.
 - Managing KPIs and their associations with assets using a Django-based web interface.
 
 ---
 
-## Architecture of calc1.py
+## Architecture 
 
-1. **Lexer**: Converts input strings (equations) into tokens.
-2. **Parser**: Constructs an Abstract Syntax Tree (AST) from tokens.
-3. **Interpreter**: Traverses the AST to evaluate expressions.
-4. **FileReader**: Reads new data records incrementally from a file.
-5. **DataProcessor**: Processes records using the provided equation.
-6. **SQLiteDataSink**: Stores the processed output into a SQLite database.
+1. **Token** `Token.py`: Defines token types for parsing equations and a Token class to represent individual tokens with a type and value
+2. **AST** `AST.py`: Represents nodes for binary operations, numeric values, and regex operations.
+4. **Lexer** `lexer.py`: Converts input strings (equations) into tokens.
+5. **Parser** `parser.py`: Constructs an Abstract Syntax Tree (AST) from tokens.
+6. **Interpreter** `interpreter.py`: Traverses the AST to evaluate expressions.
+7. **Operations** `operations.py`: Defines a base Operation class and subclasses for addition, subtraction, multiplication, and division operations.
+8. **Django Database** `django_database.py`: Retrieves the KPI expression for a given asset_id by joining the kpi_kpi and kpi_assetkpi tables.
+9. **Main** `Main.py`: Continuously reads, processes, and writes data records to the database (processed_data.db).
+   - **process_message**: Processes incoming messages, applies the relevant equation (regex or arithmetic), and returns the result.
+   - **FileReader**: Reads new records from a file starting from the last position.
+   - **DataProcessor**: Processes records by applying the equation and writing the results to the database.
+10. **SQLiteDataSink** `database.py`: Stores the processed output into a SQLite database.
 
 ---
 
